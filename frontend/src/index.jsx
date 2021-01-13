@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import './index.css';
-import Root from './client/Root';
+import { BrowserRouter } from 'react-router-dom';
+import { App } from './components/index';
 
+import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-ReactDom.render(<Root />, document.querySelector('#root'));
+ReactDom.render(
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>, document.querySelector('#root'));
