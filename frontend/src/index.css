@@ -1,7 +1,12 @@
-body {
-    background-color: #ffffef;    
+.yet {
+    background-color: #ffffa0;
 }
-
-link {
-    text-decoration: none;
+.solved {
+    background-color: #a0ffa0;
+}
+Table {
+    text-align: center;
+}
+.table th, .table td {
+    vertical-align: none;
 }
