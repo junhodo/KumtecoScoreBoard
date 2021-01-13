@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { NavBar } from './index';
-import { Home, About } from '../pages/index';
+import { Home } from '../pages/index';
 import { getSolvedProblem } from '../store/ApiStore';
 
 const App = () => {
@@ -20,7 +20,7 @@ const App = () => {
         <div className="container-lg">
             <Switch>
                 <Route exact path="/"><Home solvedData={solvedData}/></Route>
-                <Route path="/about"><About/></Route>
+                {/* <Route path="/about"><About/></Route> */}
             </Switch>
         </div>
         </div>

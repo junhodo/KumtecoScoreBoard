@@ -2,30 +2,25 @@ import React, { useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
 import { userInfo, dateInfo } from './info';
 import { getSolvedProblem } from '../../store/ApiStore';
+import Update from './Update';
 
 const ScoreBoard = (props) => {
-    const [userInfos, setUserInfos] = useState([]);
-    const [dateInfos, setDateInfos] = useState([]);
+    // const [userInfos, setUserInfos] = useState([]);
+    const userInfos = userInfo() 
+    const dateInfos = dateInfo()
     const [datas, setDatas] = useState([]);
     const [isData, setIsData] = useState(false);
 
-    useEffect(() => {
-        setUserInfos(userInfo());
-        setDateInfos(dateInfo());
+    useEffect(async () => {
+        solvedDataRefresh()
     },[]);
 
-    useEffect(() => {
-        solvedDataRefresh();
-    },[userInfos, dateInfos]);
-
-    const setLoadingTime = () => {
-        return new Promise((resolve) => setTimeout(resolve, 2000))
-    };
 
     const solvedDataRefresh = async () => {
         try {
             const data = await getSolvedProblem();
-            await dateInfos.forEach((dateInfo) => {
+            const dataArr = []
+            dateInfos.forEach((dateInfo) => {
                 const solvedArr = new Array(userInfos.length).fill(0);
                 data.Items.forEach((solved) => {
                     userInfos.forEach((userInfo, userIndex) => {
@@ -34,35 +29,18 @@ const ScoreBoard = (props) => {
                             && new Date(solved.SOLVED_DATE) < new Date(dateInfo.second)) { solvedArr[userIndex]++; };
                     })
                 })
-                data.push(solvedArr)
-            });z
-
-            setLoadingTime().then(() => {
-                if (data.length !== 0) {
-                    setDatas(data);
-                    setIsData(true);
-                    console.log(datas);
-                }
+                console.log(solvedArr)
+                dataArr.push(solvedArr)
             });
+            setDatas(dataArr)
         } 
         catch (err) {
             console.log(err);
         }
     }
 
-    const logDatas = () => {
-        solvedDataRefresh();
-        console.log(props.solvedData);
-        console.log(props.solvedData.Items);
-        console.log(props.solvedData.Count);
-        console.log(datas);
-        console.log(datas[0]);
-    }
-
-
     return (
         <div>
-            <button onClick={logDatas}>aaaa</button>
             <Table responsive = "xl" hover bordered >
                 <thead>
                     <tr>
@@ -71,19 +49,26 @@ const ScoreBoard = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {isData ?
-                        <>
-                            {datas.map((e,i) => {
+                  {
+                        Object.keys(datas).map((key, index) => {
+                            return(
                                 <tr>
-                                    {e.map((el) => <td el={el}>{el}</td>)}
-                                </tr>
+                                    <td>{+key+1}주차</td>
+                            {Object.keys(datas[key]).map((key2, index) =>{
+                                console.log(datas[key][key2])
+                                return(
+                                        <td key={key2}>{datas[key][key2]}</td>
+                                )
                             })}
-                        </>
-                        :
-                        <>no</>
-                    }
+                            </tr>
+                            )
+                        })
+                     }
                 </tbody>
             </Table>
+            <div className="button">
+                <Update reloadData={solvedDataRefresh}/>
+            </div>
         </div>
     );
 };

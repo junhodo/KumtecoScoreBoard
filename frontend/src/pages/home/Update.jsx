@@ -3,11 +3,11 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import { updateSolvedProblem } from '../../store/ApiStore';
 
-const Update = () => {
+const Update = (props) => {
     const [isLoading, setIsLoading] = useState(true);
     const [isSuccess, setIsSuccess] = useState(false);
     const [isFail, setIsFail] = useState(false);
-
+    const reloadData = props.reloadData
     const setLoadingTime = () => {
         return new Promise((resolve) => setTimeout(resolve, 2000))
     };
@@ -24,6 +24,7 @@ const Update = () => {
         await setIsLoading(false);
         if(res === "SUCCESS") {
             setIsSuccess(true);
+            reloadData()
         }
         else {
             setIsFail(true);
