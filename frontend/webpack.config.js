@@ -12,7 +12,7 @@ module.exports = {
     },
 
     entry: {
-        app: ['./src/index'],
+        app: ['babel-polyfill', './src/index'],
     }, // 입력 (index.jsx, root.jsx 는 불러옴)
     module: {   // module = loaders
         rules: [
@@ -32,7 +32,7 @@ module.exports = {
                                 },
                                 debug: false,
                             }],
-                            '@babel/preset-react'
+                            '@babel/preset-react',
                         ],
                         plugins: [
                             '@babel/plugin-proposal-class-properties',
@@ -42,7 +42,7 @@ module.exports = {
                 },
             },
             {
-                test:/\.css$/,
+                test: /\.css$/,
                 use: ["style-loader", "css-loader"],
             }
         ],
@@ -55,9 +55,11 @@ module.exports = {
         filename: 'app.js',
         publicPath: '/dist/'
     }, // 출력 (dist/app.js)
+
     devServer: {
         https: true,
         publicPath: '/dist/',
         hot: true,
     }
 };
+
