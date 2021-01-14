@@ -1,7 +1,6 @@
 const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
-const RefreshWebpackPlug = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = {
     name: "kumteko-score-board-setting",
@@ -17,7 +16,7 @@ module.exports = {
     module: {   // module = loaders
         rules: [
             {
-                test: /\.jsx?/,  // js, jsx파일 적용
+                test: /\.jsx?/, // js, jsx파일 적용
                 // 룰
                 loader: 'babel-loader',
                 // babel 옵션
@@ -36,7 +35,6 @@ module.exports = {
                         ],
                         plugins: [
                             '@babel/plugin-proposal-class-properties',
-                            'react-refresh/babel',
                         ]
                     }],
                 },
@@ -47,19 +45,10 @@ module.exports = {
             }
         ],
     },
-    plugins: [
-        // new RefreshWebpackPlug(),
-    ],
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'app.js',
         publicPath: '/dist/'
     }, // 출력 (dist/app.js)
-
-    devServer: {
-        https: true,
-        publicPath: '/dist/',
-        hot: true,
-    }
 };
 
