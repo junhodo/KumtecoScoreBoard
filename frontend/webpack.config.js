@@ -48,7 +48,7 @@ module.exports = {
         ],
     },
     plugins: [
-        new RefreshWebpackPlug(),
+        // new RefreshWebpackPlug(),
     ],
     output: {
         path: path.join(__dirname, 'dist'),
