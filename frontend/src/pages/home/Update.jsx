@@ -7,14 +7,15 @@ const Update = (props) => {
     const [isLoading, setIsLoading] = useState(true);
     const [isSuccess, setIsSuccess] = useState(false);
     const [isFail, setIsFail] = useState(false);
-    const reloadData = props.reloadData
-    const setLoadingTime = () => {
-        return new Promise((resolve) => setTimeout(resolve, 2000))
-    };
-
+    const reloadData = props.reloadData;
+    
     useEffect(() => {
         handleLoading();
     }, []);
+
+    const setLoadingTime = () => {
+        return new Promise((resolve) => setTimeout(resolve, 2000))
+    };
 
     const handleClick = async () => {
         await setIsLoading(true);
@@ -33,19 +34,17 @@ const Update = (props) => {
 
     const handleLoading = () => {
         if (isLoading) {
-            setLoadingTime().then(() => {
-                setIsLoading(false);
-            });
+            setLoadingTime().then(() => {setIsLoading(false);});
         }
     }
 
     return (
-        <><br/>
+        <>
             <Button
                 variant="danger"
+                className="button"
                 disabled={isLoading}
                 onClick={!isLoading ? handleClick : null}
-                className="button"
             >
                 {isLoading ? 'Loading…' : '갱신'}
             </Button>
@@ -62,6 +61,7 @@ const Update = (props) => {
             >
                 갱신 실패!
             </Alert>
+        <br/><br/>
         </>
     );
 };

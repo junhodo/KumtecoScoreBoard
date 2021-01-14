@@ -1,12 +1,27 @@
+
+Table {
+    text-align: center;
+}
+.table th, .table td {
+    vertical-align: none;
+}
+
+.danger {
+    background-color: #ff7c7c;
+    
+}
 .yet {
     background-color: #ffffa0;
 }
 .solved {
     background-color: #a0ffa0;
 }
-Table {
-    text-align: center;
+
+.button {
+    float:right;
 }
-.table th, .table td {
-    vertical-align: none;
+
+.spinner {
+    position: absolute;
+    left: 50%;
 }

@@ -5,7 +5,6 @@ export const getSolvedProblem = async () => {
     const result = await axios.get(api)
         .catch(error => {return error.response})
         .then(res => {
-            console.log(res.data);
             return res.data;
         });
     return result;
@@ -17,7 +16,6 @@ export const updateSolvedProblem = async () => {
         timeout: 180000,
     }).catch(error => {return error.response})
         .then(res => {
-            console.log(res.data);
             return res.data;
         });
     return result; 
