@@ -1,27 +1,16 @@
-import React, {useState, useEffect} from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React from 'react';
+import { Route } from 'react-router-dom';
 import { NavBar } from './index';
-import { Home } from '../pages/index';
-import { getSolvedProblem } from '../store/ApiStore';
+import Home from '../pages/home/Home';
+import About from '../pages/about/About';
 
 const App = () => {
-    const [solvedData, setSolvedData] = useState([]);
-    const statusRefresh = async () => {
-
-    }
-    
-    useEffect(() => {
-        statusRefresh();
-    },[]);
-
     return (
         <div>
         <NavBar />
         <div className="container-lg">
-            <Switch>
-                <Route exact path="/"><Home solvedData={solvedData}/></Route>
-                {/* <Route path="/about"><About/></Route> */}
-            </Switch>
+            <Route exact path="/"><Home /></Route>
+            <Route path="/about"><About /></Route>
         </div>
         </div>
     );
