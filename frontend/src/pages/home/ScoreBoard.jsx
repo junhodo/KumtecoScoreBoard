@@ -26,7 +26,7 @@ const ScoreBoard = () => {
                     userData.forEach((userInfo, userIndex) => {
                         if (solved.ACM_ID === userInfo.id
                             && new Date(dateInfo.first) <= new Date(solved.SOLVED_DATE)
-                            && new Date(solved.SOLVED_DATE) < new Date(dateInfo.second)) { solvedArr[userIndex]++; };
+                            && new Date(solved.SOLVED_DATE) <= new Date(dateInfo.second)) { solvedArr[userIndex]++; };
                     })
                 })
                 dataArr.push(solvedArr)
@@ -44,7 +44,10 @@ const ScoreBoard = () => {
                 <thead>
                     <tr>
                         <th keys="blank"></th>
-                        {userData.map((e) => <th keys={e.name}>{e.name}</th>)}
+                        {userData.map((e) => 
+                            <th keys={e.name} className="table-head">
+                                <a href={`https://www.acmicpc.net/user/${e.id}`} target="_blank">{e.name}</a>
+                            </th>)}
                     </tr>
                 </thead>
                 <tbody>
