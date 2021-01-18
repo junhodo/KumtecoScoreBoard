@@ -25,3 +25,8 @@ Table {
     position: absolute;
     left: 50%;
 }
+
+.table-head a, .table-head :hover{
+    color: black;
+    text-decoration: none;
+}
