@@ -1,6 +1,3 @@
-// ScroeBoard 테이블 정보
-
-
 export const userInfo = () => {
     return [
         { name: '김주현', id: 'darkraykim' },
@@ -18,10 +15,9 @@ export const userInfo = () => {
 };
 
 
-const nowDate = new Date();
-
 export const dateInfo = () => {
     const data = [];
+    const nowDate = new Date();
     let firstDate = new Date('2020/12/28');
     let secondDate = new Date('2021/01/03');
     while (firstDate <= nowDate) {
@@ -45,4 +41,4 @@ export const dateInfo = () => {
     // ];
 
     return data;
-}
+};

@@ -93,4 +93,5 @@ const ScoreBoard = () => {
         </div>
     );
 };
+
 export default ScoreBoard;
