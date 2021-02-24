@@ -14,7 +14,7 @@ const NavBar = () => {
             <NavDropdown title="Link" id="basic-nav-dropdown">
               <NavDropdown.Item href="https://www.acmicpc.net/" target="_blank">백준</NavDropdown.Item>
               <NavDropdown.Item href="https://solved.ac/" target="_blank">solved.ac</NavDropdown.Item>
-              <NavDropdown.Item href="https://github.com/junhodo/KumtecoScoreBoard" target="_blank">GitHub</NavDropdown.Item>
+              <NavDropdown.Item href="https://github.com/junhodo/KumtecoScoreBoard" target="_blank">금테코 Git</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link as={Link} to="/about">About</Nav.Link>
           </Nav>
