@@ -24,7 +24,7 @@ export const dateInfo = () => {
     const data = [];
     let firstDate = new Date('2020/12/28');
     let secondDate = new Date('2021/01/03');
-    while(firstDate <= nowDate) {
+    while (firstDate <= nowDate) {
         const date = {
             first: `${1900 + firstDate.getYear()}/${1 + firstDate.getMonth()}/${firstDate.getDate()}`,
             second: `${1900 + secondDate.getYear()}/${1 + secondDate.getMonth()}/${secondDate.getDate()}`,
